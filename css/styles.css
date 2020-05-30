@@ -1,0 +1,31 @@
+.container {
+    max-width: 1000px;
+}
+
+.navbar {
+    padding: 1rem 2rem;
+}
+
+.navbar > .container {
+	display: block;
+}
+
+.section {
+    padding-top: 3.5rem;
+}
+
+.fa-github {
+    padding-right: 0.5rem;
+}
+
+svg g {
+    stroke: #3273dc !important;
+}
+
+svg:hover g {
+    stroke: #363636 !important;
+}
+
+.level .icon {
+    padding: 0 1rem;
+}
