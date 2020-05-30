@@ -88,7 +88,7 @@ def random_event(created_date=None):
             logging.debug(e)
 
 
-if config.config.get("start_date"):
+if config.config.get("start_date") and int(config.config.get("number_of_events")):
     start_date = config.config.get("start_date")
     end_date = datetime.datetime.utcnow()
     logging.info(
