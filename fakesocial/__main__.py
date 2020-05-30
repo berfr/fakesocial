@@ -59,10 +59,10 @@ image.register_images()
 
 events = [
     user.gen_user,
-    post.gen_post,
-    user.create_random_user_connection,
-    post.gen_comment,
-    user.create_random_post_like,
+    *[post.gen_post] * 5,
+    *[post.gen_comment] * 10,
+    *[user.create_random_user_connection] * 15,
+    *[user.create_random_post_like] * 20,
 ]
 
 
