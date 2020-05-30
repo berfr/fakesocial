@@ -123,8 +123,6 @@ def get_stats():
     stats = {
         "user_count": session.query(data.User).count(),
         "post_count": session.query(data.Post).count(),
-        "image_count": session.query(data.Image).count(),
-        "connection_count": session.query(data.Connection).count(),
         "connection_count": session.query(data.Connection).count(),
         "comment_count": session.query(data.Comment).count(),
         "like_count": session.query(data.Like).count(),
@@ -132,7 +130,6 @@ def get_stats():
     stats["total_events"] = (
         stats["user_count"]
         + stats["post_count"]
-        + stats["connection_count"]
         + stats["connection_count"]
         + stats["comment_count"]
         + stats["like_count"]
