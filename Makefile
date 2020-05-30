@@ -9,7 +9,7 @@ site-setup:
 	git clone --branch gh-pages --single-branch git@github.com:berfr/fakesocial.git site
 
 site-gen:
-	python -m fakesocial --verbose -c db_file=db/data.db number_of_events=100 start_date='2020-01-01'
+	python -m fakesocial --verbose -c db_file=db/data.db number_of_events=10000
 
 site-serve:
 	python -m http.server -d site
