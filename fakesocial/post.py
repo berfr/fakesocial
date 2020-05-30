@@ -6,6 +6,7 @@ import logging
 import random
 
 import markovify
+import sqlalchemy
 
 from . import data
 from . import user
@@ -61,15 +62,20 @@ def gen_post(user_id=None, created_date=None):
     return post
 
 
-def get_random_post():
+def get_random_recent_post():
     session = data.Session()
-    post_ids = [row[0] for row in session.query(data.Post.id).all()]
-    return random.choice(post_ids)
+    posts = (
+        session.query(data.Post)
+        .order_by(sqlalchemy.desc(data.Post.created_date))
+        .limit(5)
+        .all()
+    )
+    return random.choice(posts).id
 
 
 def gen_comment(user_id=None, post_id=None, created_date=None):
     user_id = user_id or user.get_random_user()
-    post_id = post_id or get_random_post()
+    post_id = post_id or get_random_recent_post()
     text = _gen_quote(length=50)
 
     comment = data.Comment(

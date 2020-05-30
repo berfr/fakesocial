@@ -86,7 +86,7 @@ def create_random_user_connection(created_date=None):
 def create_random_post_like(user_id=None, post_id=None, created_date=None):
     session = data.Session()
 
-    post_id = post_id or post.get_random_post()
+    post_id = post_id or post.get_random_recent_post()
     user_id = user_id or get_random_user()
 
     like = data.Like(created_date=created_date, post_id=post_id, user_id=user_id)
