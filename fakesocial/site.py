@@ -105,10 +105,9 @@ def gen_images():
     logging.info("generating site images")
     session = data.Session()
 
-    for i in session.query(data.Image).all():
-        image_path = image._get_image_path(i.uuid)
-
-        dest_file_name = "{}/{}".format(site_images_dir, i.uuid)
+    for u in session.query(data.User).all():
+        image_path = image._get_image_path(u.image_uuid)
+        dest_file_name = "{}/{}".format(site_images_dir, u.image_uuid)
 
         im = PIL.Image.open(image_path)
 
