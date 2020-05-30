@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>fakesocial</title>
+    <link rel="stylesheet" href="/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<body>
+
+    <div id="app">
+
+        <nav class="navbar is-fixed-top has-shadow">
+            <div class="container">
+                <div class="columns is-vcentered">
+                    <div class="column is-narrow">
+                        <figure class="image is-64x64">
+                            <router-link to="/">
+                                <svg width="64" height="64" version="1.1" viewBox="0 0 12.7 12.7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><g style="fill-opacity:0;mix-blend-mode:normal;stroke-linejoin:round;stroke-width:.5;stroke:#3273dc" aria-label="fs"><path d="m2.1745 12.093h1.397v-6.5193h2.0489v-1.0866h-2.0489v-1.7074c0-0.77611 0.35701-1.0866 0.96238-1.0866 0.31044 0 0.52775 0.046567 0.77611 0.1397l0.21731-1.1797c-0.32597-0.12418-0.6985-0.20179-1.2107-0.20179-1.4125 0-2.1421 0.88477-2.1421 2.2352v1.8006h-1.1331l-0.18627 1.0866h1.3194z" style="fill-opacity:0;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;stroke-linejoin:round;stroke-width:.5"/><path d="m8.9422 12.248c2.3283 0 2.9027-1.2573 2.9027-2.2662 0-1.5833-1.428-2.0489-2.1731-2.2662-1.1952-0.35701-1.7695-0.54328-1.7695-1.2573s0.60537-1.0245 1.4746-1.0245c0.85372 0 1.4125 0.29492 1.8627 0.66745l0.17074-1.2728c-0.46567-0.23283-1.0555-0.49671-2.0645-0.49671-2.08 0-2.8561 1.1176-2.8561 2.2818 0 1.5367 1.3504 1.9092 2.3904 2.1886 0.62089 0.17074 1.5212 0.46567 1.5212 1.2573 0 0.60537-0.54328 0.94685-1.5212 0.94685-1.1642 0-2.0489-0.48119-2.3749-0.77611l-0.17074 1.3504c0.35701 0.24836 1.2573 0.66746 2.6077 0.66746z" style="fill-opacity:0;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;stroke-linejoin:round;stroke-width:.5"/></g></g></svg>
+                            </router-link>
+                        </figure>
+                    </div>
+                    <div class="column is-narrow">
+                        <h1 class="title">
+                            fakesocial
+                        </h1>
+                        <p class="subtitle">
+                            Fake social network using generated content.
+                        </p>
+                    </div>
+                    <div class="column">
+                        <a class="is-pulled-right" href="https://github.com/berfr/fakesocial">
+                            <i class="fab fa-github fa-2x"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="section">
+            <div class="container">
+                <router-view></router-view>
+                <post v-for="post in data.posts" v-bind:post="post" v-bind:key="post.id"></post>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/js/vue.min.js"></script>
+    <script src="/js/vue-router.min.js"></script>
+    <script src="/js/moment.min.js"></script>
+    <script src="/js/script.js"></script>
+
+</body>
+
+</html>
