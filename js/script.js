@@ -218,6 +218,7 @@ const PostRoute = {
             let self = this;
             fs.get_post_details(this.$route.params.id).then(function(post) {
                 self.post = post;
+                document.title = post.user.full_name + ' - post ' + post.id + ' | fakesocial';
             });
         },
     },
@@ -292,6 +293,7 @@ const UserRoute = {
             let self = this;
             fs.get_user_details(this.$route.params.id).then(function(user) {
                 self.user = user;
+                document.title = user.full_name + ' | fakesocial';
             });
         },
     },
@@ -299,6 +301,23 @@ const UserRoute = {
         'post': Post,
     },
 };
+
+const router = new VueRouter({
+    routes: [{
+        path: '/post/:id',
+        component: PostRoute,
+    }, {
+        path: '/user/:id',
+        component: UserRoute,
+    }],
+});
+
+router.beforeEach(function(to, from, next) {
+    if (to.path === '/') {
+        document.title = 'fakesocial';
+    }
+    next();
+});
 
 let app = new Vue({
     el: '#app',
@@ -317,13 +336,5 @@ let app = new Vue({
             }
         };
     },
-    router: new VueRouter({
-        routes: [{
-            path: '/post/:id',
-            component: PostRoute,
-        }, {
-            path: '/user/:id',
-            component: UserRoute,
-        }],
-    }),
+    router: router,
 });
