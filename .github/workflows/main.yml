@@ -1,0 +1,39 @@
+name: Generate new events
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - uses: actions/checkout@v2
+      with:
+        ref: gh-pages
+        path: site
+
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Generate new events
+      run: |
+        python -m fakesocial --verbose -c db_file=site/data.db number_of_events=10
+
+    - name: Push back changes
+      run: |
+        git config --global user.name 'berfr github actions bot'
+        git config --global user.email 'berfr4+github-actions-bot@gmail.com'
+        git -C site add --all
+        git -C site commit -m "Site update" || true
+        git -C site push

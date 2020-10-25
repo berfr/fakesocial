@@ -30,7 +30,7 @@ def setup_site_dir():
     if not os.path.exists(config.config["output_dir"]):
         os.mkdir(config.config["output_dir"])
     for filename in os.listdir(config.config["output_dir"]):
-        if filename != ".git":
+        if filename not in [".git", "data.db"]:
             filepath = "{}/{}".format(config.config["output_dir"], filename)
             if os.path.isdir(filepath):
                 shutil.rmtree(filepath)
